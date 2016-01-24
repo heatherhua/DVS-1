@@ -15,6 +15,10 @@
   * Settings > Build, Execution, Deployment > Compiler > Annotation Processors > Enable annotation processing
 * make sure Lombok plugin is enabled. Settings > Other Settings > Lombok Plugin
 
+
+https://docs.oracle.com/javase/tutorial/essential/io/notification.html
+
+^^ Using this for introducing live action camera. 
 ---
 
 Some Test Photos (go to album view): https://www.flickr.com/gp/132858191@N07/239nT3/
