@@ -137,6 +137,8 @@ public class PhotoGridController implements Initializable, ControlledScreen {
 //        File dir = new File(System.getProperty("user.home")); // use this for production
         fileChooser.setInitialDirectory(dir.getAbsoluteFile());
         File file = fileChooser.showOpenDialog(root.getScene().getWindow());
+
+
         if (file != null) {
             fileChooser.setInitialDirectory(file.getParentFile());
             hFilePath = file.getAbsolutePath();

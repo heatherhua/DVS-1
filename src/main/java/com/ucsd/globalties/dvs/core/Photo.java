@@ -85,6 +85,15 @@ public class Photo {
         detectedFace = faceDetections.toArray()[0];
         Rect faceBox = new Rect(detectedFace.x, detectedFace.y, detectedFace.width, (detectedFace.height * 2) / 3);
         //Highgui.imwrite("face_"+ type + ".jpg", new Mat(image, faceBox));
+
+        // Debugging code to generate images of all the detected faces
+//        int i = 0;
+//        Rect faceBox2;
+//        for(Rect face : faceDetections.toArray()){
+//            faceBox2 = new Rect(face.x, face.y, face.width, (face.height * 2) / 3);
+//            Highgui.imwrite("myface_"+ i++ + ".jpg", new Mat(image, faceBox2));
+//        }
+
         return faceBox;
     }
 
@@ -100,11 +109,15 @@ public class Photo {
 
         // find face
         Rect faceBox = findFaceRoi(image);
+
         // Detect eyes from cropped face image
         CascadeClassifier eyeDetector = new CascadeClassifier(Main.HAAR_EYE_PATH);
         MatOfRect eyeDetections = new MatOfRect();
         Mat faceImage = faceBox != null ? new Mat(image, faceBox) : image;
         eyeDetector.detectMultiScale(faceImage, eyeDetections);
+
+//        Imshow face = new Imshow("Face");
+//        face.showImage(faceImage);
 
         List<Rect> detectedEyes = eyeDetections.toList();
         log.info("Detected {} eyes for img: {}", detectedEyes.size(), path);

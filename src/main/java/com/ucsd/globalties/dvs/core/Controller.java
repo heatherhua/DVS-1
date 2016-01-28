@@ -8,7 +8,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.opencv.highgui.Highgui;
+import com.ucsd.globalties.dvs.core.tools.WatchDir;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 @Slf4j
@@ -28,6 +32,18 @@ public class Controller {
     @Setter
     private Patient patient = null;
     private List<Patient> sessionPatients = null;
+
+    // Directory to watch for new images sent from EOS Utility
+    public Controller(){
+        Path dir_path = Paths.get(System.getProperty("user.home") + "/Desktop/" + "2016_01_23");
+        try{
+            WatchDir watcher = new WatchDir(dir_path, false);
+            watcher.processEvents();
+
+        } catch (Exception e){
+            System.out.println("Error watching photo directory: "+ e.toString());
+        }
+    }
 
     public void setPatientPhotos(String hFilePath, String vFilePath) {
         List<Photo> photos = new ArrayList<>();
